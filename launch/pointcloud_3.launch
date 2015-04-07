@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find sick_tim)/launch/sick_tim561_3.launch" />
+  <node pkg="scalaser" type="LaserScanToPointCloud" name="my_cloud_3" args="/laser_3 /scan_3">
+  <remap from="cloud" to="cloud_3"/>
+  </node>
+
+</launch>
