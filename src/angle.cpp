@@ -25,7 +25,7 @@ class matching{
   int h;
 
   //
-  matlab::Engine engine;
+  matlab::Engine engi;
 
 public:
   matching() {};
@@ -125,14 +125,14 @@ int main(int argc, char **argv) {
  ros::NodeHandle n;
  Angle angle(n);
  ROS_INFO("Woking fine, son!");
- matlab::Engine engi;
+ matlab::Engine engine;
 
  double a = 3;
- //engi.put("a",a);
- engi.executeCommand("cd('~/Documents')");
- engi.executeCommand("test.m");
+ engine.put("a",a);
+ engine.executeCommand("cd('~/catkin_ws/src/scalaser/matlab')"); // Path to matlab function
+ engine.executeCommand("test()");
  ROS_INFO("NOT WORKING");
- engi.openCommandLine();
+ engine.openCommandLine();
  ros::spin();
 
  return 0;
