@@ -7,8 +7,9 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   geometry_msgs
   tf
- 
+  matlab_cpp_interface
 )
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -72,7 +73,8 @@ generate_messages(
  )
 
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
+
 #  LIBRARIES scalaser
    CATKIN_DEPENDS 
   laser_assembler
@@ -81,6 +83,7 @@ catkin_package(
   sensor_msgs
   message_filters
   tf
+  matlab_cpp_interface
 #  DEPENDS system_lib
 )
 
@@ -92,8 +95,9 @@ catkin_package(
 ## Your package locations should be listed before other locations
 # include_directories(include)
 include_directories(
-  ${catkin_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS} 
 )
+  
 
 ## Declare a cpp library
 # add_library(scalaser
@@ -164,5 +168,8 @@ include_directories(
 add_executable(LaserScanToPointCloud src/LaserScanToPointCloud.cpp)
 target_link_libraries(LaserScanToPointCloud ${catkin_LIBRARIES} ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} )
 
-add_executable(Hough src/hough.cpp)
-target_link_libraries(Hough ${catkin_LIBRARIES})
+## add_executable(Hough src/hough.cpp)
+##target_link_libraries(Hough ${catkin_LIBRARIES})
+
+add_executable(Angle src/angle.cpp)
+target_link_libraries(Angle ${catkin_LIBRARIES})
